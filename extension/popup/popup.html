@@ -9,13 +9,23 @@
   <body>
     <div class="wrap">
       <header class="hdr">
-        <div class="title">Dev Panel</div>
-        <div class="sub">localhost:3333</div>
+        <div class="brand">
+          <div class="logoMark" aria-hidden="true"></div>
+          <div>
+            <div class="title">Dev Panel</div>
+            <div class="sub">localhost:3333</div>
+          </div>
+        </div>
       </header>
 
       <main class="main">
         <div id="msg" class="msg">Checking server…</div>
-        <button id="connectBtn" class="btn" style="display:none;">Connect</button>
+
+        <div class="btnRow">
+          <button id="openBtn" class="btn btnGhost" style="display:none;">Open panel</button>
+          <button id="connectBtn" class="btn btnPrimary" style="display:none;">Connect</button>
+        </div>
+
         <div id="status" class="status">—</div>
       </main>
     </div>

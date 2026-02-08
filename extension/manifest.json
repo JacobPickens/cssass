@@ -7,11 +7,12 @@
     "default_title": "Connect",
     "default_popup": "popup/popup.html"
   },
-  "background": { "service_worker": "background.js" },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "contextMenus"
   ],
+  "background": { "service_worker": "background.js" },
   "host_permissions": [
     "http://localhost:3333/*",
     "<all_urls>"

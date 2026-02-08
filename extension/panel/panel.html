@@ -1,28 +1,106 @@
 <div class="wrap" id="wrap">
   <div class="panel" id="panelRoot">
-    <div class="header" id="hdr">
-      <div class="left">
-        <div class="title">Development Panel</div>
+    <div class="panelClip" id="panelClip">
+      <div class="header" id="hdr">
+        <div class="tabBar" id="tabBar">
+          <button class="tabBtn tabEdit isActive" data-tab="edit" data-tip="Edit: generate and apply styles">
+            <span class="logoMini" aria-hidden="true"><span>S</span></span>
+            Edit
+          </button>
+          <button class="tabBtn" data-tab="file" data-tip="File: manage local export/import (coming soon)">File</button>
+          <button class="tabBtn" data-tab="history" data-tip="History: view prior generations (coming soon)">History</button>
+          <button class="tabBtn" data-tab="settings" data-tip="Settings: configure panel behavior (coming soon)">Settings</button>
+        </div>
+
+        <div class="right">
+          <img
+            id="minimize"
+            class="icon-btn panel-btn"
+            data-src="img/window-toggle.svg"
+            data-tip="Minimize panel"
+          />
+          <img
+            id="close"
+            class="icon-btn panel-btn"
+            data-src="img/close.svg"
+            data-tip="Hide panel on this page"
+          />
+        </div>
       </div>
 
-      <div class="right">
-        <img id="minimize" class="icon-btn" data-src="img/minimize.svg" />
-        <img id="close" class="icon-btn" data-src="img/close.svg" />
+      <!-- Loading overlay -->
+      <div class="loadingOverlay" id="loadingOverlay" aria-hidden="true">
+        <div class="loadingCard">
+          <div class="loadingTop">
+            <div class="spinner" aria-hidden="true"></div>
+            <div class="loadingText">
+              <div class="loadingTitle">Generating style…</div>
+              <div class="loadingMeta">
+                Elapsed: <span id="elapsed">0.0s</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cancelWrap">
+            <button
+              id="cancelJob"
+              class="btn btnGhost"
+              data-tip="Cancel the current generation request"
+            >Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="body" id="body">
+        <!-- EDIT -->
+        <div class="pane isActive" id="pane-edit" data-pane="edit">
+          <div class="editPane">
+            <div class="selRow">
+              <div class="sel" id="selText" data-tip="Current target selector (click for quick hint)">full page</div>
+
+              <div class="devActions">
+                <img
+                  id="reset"
+                  class="icon-btn dev-btn"
+                  data-src="img/close.svg"
+                  data-tip="Reset selection to full page"
+                />
+                <img
+                  id="select"
+                  class="icon-btn dev-btn"
+                  data-src="img/select.svg"
+                  data-tip="Pick an element to target"
+                />
+              </div>
+            </div>
+
+            <textarea class="textarea" id="prompt" placeholder="Describe the style you want…"></textarea>
+
+            <div class="row">
+              <div class="hint" id="hint">Tip: Use crosshairs to target an element.</div>
+              <button class="btn btnStyle" id="styleBtn" data-tip="Generate and apply CSS">Style</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILE -->
+        <div class="pane" id="pane-file" data-pane="file">
+          <div class="paneBox">File tools are coming soon.</div>
+        </div>
+
+        <!-- HISTORY -->
+        <div class="pane" id="pane-history" data-pane="history">
+          <div class="paneBox">History is coming soon.</div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="pane" id="pane-settings" data-pane="settings">
+          <div class="paneBox">Settings are coming soon.</div>
+        </div>
       </div>
     </div>
 
-    <div class="body" id="body">
-      <div class="sel" id="selText">Selected: full page</div>
-      <div class="right">
-        <img id="reset" class="icon-btn" data-src="img/close.svg" />
-        <img id="select" class="icon-btn" data-src="img/select.svg" />
-      </div>
-
-      <textarea class="textarea" id="prompt" placeholder="Describe the style you want…"></textarea>
-      <div class="row">
-        <div class="hint" id="hint">Tip: Use crosshairs to target an element.</div>
-        <button class="btn" id="styleBtn">Style</button>
-      </div>
-    </div>
+    <!-- Single tooltip node -->
+    <div id="tooltip" class="tooltip" aria-hidden="true"></div>
   </div>
 </div>
